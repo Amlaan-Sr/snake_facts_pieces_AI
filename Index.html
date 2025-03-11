@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: firozi;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #fact-display {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid firozi;
+            border-radius: 5px;
+            background-color: #333;
+            color: firozi;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #fact-button {
+            background-color: firozi;
+            color: black;
+        }
+
+        .star-button {
+            background-color: transparent;
+            color: firozi;
+            font-size: 24px;
+            border: 2px solid firozi;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-display">Click the button to see a snake fact!</div>
+    <button id="fact-button">Show Random Fact</button>
+    <button id="share-button" class="star-button">★ Share</button>
+    <script>
+        const facts = [
+            "Snakes are found on every continent except Antarctica.",
+            "There are over 3,000 species of snakes worldwide.",
+            // ... other facts
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', () => {
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            document.getElementById('fact-display').textContent = randomFact;
+        });
+
+        document.getElementById('share-button').addEventListener('click', () => {
+            const fact = document.getElementById('fact-display').textContent;
+            const shareText = `Check out this snake fact: "${fact}"`;
+            const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+            window.open(shareUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
